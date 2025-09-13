@@ -1,0 +1,26 @@
+# 테슬라 주식 데이터 다운로드 및 5% 이상 상승시각화
+
+import pandas as pd
+import yfinance as yf
+
+# 테슬라 주식 데이터 다운로드 (최근 3년, 일간 간격) 
+tsla = yf.download('TSLA', period='3y', interval='1d')
+tsla.head()
+
+# 상승률 계산: (종가 - 시가) / 시가 * 100
+tsla['Daily_Return_%'] = (tsla['Close'] - tsla['Open']) / tsla['Open'] * 100
+
+# 5% 이상 상승한 날만 보기
+tsla_up_5 = tsla[tsla['Daily_Return_%'] >= 5]
+print(tsla_up_5[['Open', 'Close', 'Daily_Return_%']])
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(12,6))
+plt.plot(tsla.index, tsla['Daily_Return_%'], label='Daily Return (%)')
+plt.axhline(5, color='red', linestyle='--', label='5% 기준선')
+plt.legend()
+plt.title('테슬라 일일 상승률')
+plt.ylabel('%')
+plt.grid(True)
+plt.show()
