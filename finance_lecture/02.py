@@ -149,3 +149,6 @@ print('b=', b)
 c = np.vstack([a, b])
 print('np.vstack([a, b])=', c)  #수직으로 쌓기 2행 4열
 print('np.hstack[a, b]=', np.hstack([a, b])) #수평으로 쌓기 1행 8열
+
+
+from pandas import Series
