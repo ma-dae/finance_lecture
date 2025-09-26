@@ -241,4 +241,4 @@ index = ['000010', '000020', '000030', '000040']
 s = Series(data=data, index=index)
 print('순위 = ', s.rank()) #숫자가 작을 수록 1등. 1등 2.5등 4등 요론 노낌
 
-print('이쁜 순위 = ',s.rank(ascending =False, method='min')) #숫자가 클 수록 1등. 1등 3등 4등 요론 느낌
+print('이쁜 순위 = ',s.rank(ascending =False, method='min')) #이건 이상해서 담시간에 알려드릴게욤
